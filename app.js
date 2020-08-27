@@ -46,8 +46,8 @@ app.use(
     credentials: true,
     origin: [
       "http://localhost:3000",
-      "https://ohmyhome.herokuapp.com",
-      "http://ohmyhome.herokuapp.com",
+      "http://ohmyhome2.herokuapp.com",
+      "https://ohmyhome2.herokuapp.com",
     ],
   })
 );
@@ -98,13 +98,13 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 // ROUTER MIDDLEWARE
-app.use("/auth", auth);
+app.use("/api/auth", auth);
 //EMPIEZA AQUI
-app.use("/api", taskRouter);
-app.use("/profile", profileRouter);
-app.use("/group", groupRouter);
-app.use("/message", messageRouter);
-app.use("/photo", uploadPhotoRouter);
+app.use("/api/api", taskRouter);
+app.use("/api/profile", profileRouter);
+app.use("/api/group", groupRouter);
+app.use("/api/message", messageRouter);
+app.use("/api/photo", uploadPhotoRouter);
 
 // ROUTE FOR SERVING REACT APP (index.html)
 app.use((req, res) => {
