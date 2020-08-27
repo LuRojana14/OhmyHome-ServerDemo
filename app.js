@@ -44,7 +44,11 @@ const app = express();
 app.use(
   cors({
     credentials: true,
-    origin: ["http://localhost:3000", "https://ohmyhome-c0626.web.app"],
+    origin: [
+      "http://localhost:3000",
+      "https://ohmyhome.herokuapp.com",
+      "http://ohmyhome.herokuapp.com",
+    ],
   })
 );
 // app.use((req, res, next) => {
@@ -101,6 +105,12 @@ app.use("/profile", profileRouter);
 app.use("/group", groupRouter);
 app.use("/message", messageRouter);
 app.use("/photo", uploadPhotoRouter);
+
+// ROUTE FOR SERVING REACT APP (index.html)
+app.use((req, res) => {
+  // If no routes match, send them the React HTML.
+  res.sendFile(__dirname + "/public/index.html");
+});
 
 // ERROR HANDLING
 // catch 404 and forward to error handler
