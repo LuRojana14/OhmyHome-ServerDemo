@@ -98,7 +98,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 // ROUTER MIDDLEWARE
-app.use("/api/auth", auth);
+app.use("/auth", auth);
 //EMPIEZA AQUI
 app.use("/api/api", taskRouter);
 app.use("/api/profile", profileRouter);
